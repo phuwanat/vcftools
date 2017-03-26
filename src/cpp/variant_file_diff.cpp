@@ -843,6 +843,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		if(new_e1 && new_e2)
 		{
 			alleles_match = (ALT1 == ALT2) && (REF1 == REF2);
+			diffsites << "\t" << REF1 << "\t" << ALT2 << "\t";
 			diffsites << alleles_match;
 
 			e1->parse_full_entry(true);
