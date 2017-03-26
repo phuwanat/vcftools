@@ -840,6 +840,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		unsigned int N_discord=0;
 		unsigned int N_concord_non_missing=0;
 		unsigned int N_concord_non_missing_nonRR=0;
+		unsigned int N_concord_non_missing_nonAA=0;
 
 		if(new_e1 && new_e2)
 		{
@@ -878,6 +879,9 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 								//N_concord_non_missing_nonRR++;
 								if(geno_ids1.first==0) {
 									N_concord_non_missing_nonRR++;
+								}
+								else {
+									N_concord_non_missing_nonAA++;
 								}
 							}
 						}
