@@ -839,6 +839,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		unsigned int N_missing_1=0, N_missing_2=0;
 		unsigned int N_discord=0;
 		unsigned int N_concord_non_missing=0;
+		unsigned int N_concord_non_missing_nonRR=0;
 
 		if(new_e1 && new_e2)
 		{
@@ -871,6 +872,10 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 								((geno_ids1.first == geno_ids2.second) && (geno_ids1.second == geno_ids2.first)) )
 						{	// Match
 							N_concord_non_missing++;
+							if(geno_ids1.first == geno_ids1.second)
+							{	//REF-REF
+								N_concord_non_missing_nonRR++;
+							}
 						}
 						else
 						{	// Mismatch
@@ -931,7 +936,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 			diffsites << "0";
 
 		double discordance = N_discord / double(N_common_called);
-		diffsites << "\t" << N_common_called << "\t" << N_discord << "\t" << discordance;
+		diffsites << "\t" << N_common_called << "\t" << N_discord << "\t" << discordance << "\t" << N_concord_non_missing_nonRR;
 		diffsites << endl;
 	}
 
