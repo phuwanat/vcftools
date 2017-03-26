@@ -674,7 +674,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		buf = cout.rdbuf();
 
 	ostream diffsites(buf);
-	diffsites << "CHROM\tPOS\tFILES\tREF\tALT\tMATCHING_ALLELES\tN_COMMON_CALLED\tN_DISCORD\tDISCORDANCE\tN_MATCHED_RR" << endl;
+	diffsites << "CHROM\tPOS\tFILES\tREF\tALT\tMATCHING_ALLELES\tN_COMMON_CALLED\tN_DISCORD\tDISCORDANCE\tN_MATCHED_RR\tN_MATCHED_AA" << endl;
 
 	while(true)
 	{
@@ -944,7 +944,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 			diffsites << "0";
 
 		double discordance = N_discord / double(N_common_called);
-		diffsites << "\t" << N_common_called << "\t" << N_discord << "\t" << discordance << "\t" << N_concord_non_missing_nonRR;
+		diffsites << "\t" << N_common_called << "\t" << N_discord << "\t" << discordance << "\t" << N_concord_non_missing_nonRR << "\t" << N_concord_non_missing_nonAA;
 		diffsites << endl;
 	}
 
