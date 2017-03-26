@@ -874,7 +874,8 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 							N_concord_non_missing++;
 							if(geno_ids1.first == geno_ids1.second)
 							{	//REF-REF
-								printf("%s",geno_ids1.second);
+								LOG.one_off_warning("%s",geno_ids1.second);
+								continue;
 								N_concord_non_missing_nonRR++;
 							}
 						}
