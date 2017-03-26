@@ -874,8 +874,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 							N_concord_non_missing++;
 							if(geno_ids1.first == geno_ids1.second)
 							{	//REF-REF
-								LOG.printLOG("Found " + geno_ids1.second + " ssites common to both files.\n");
-								continue;
+								difsites << geno_ids1.first;
 								N_concord_non_missing_nonRR++;
 							}
 						}
