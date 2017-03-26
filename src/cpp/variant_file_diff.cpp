@@ -674,7 +674,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		buf = cout.rdbuf();
 
 	ostream diffsites(buf);
-	diffsites << "CHROM\tPOS\tFILES\tMATCHING_ALLELES\tN_COMMON_CALLED\tN_DISCORD\tDISCORDANCE" << endl;
+	diffsites << "CHROM\tPOS\tFILES\tREF\tALT\tMATCHING_ALLELES\tN_COMMON_CALLED\tN_DISCORD\tDISCORDANCE\tN_MATCHED_RR" << endl;
 
 	while(true)
 	{
@@ -844,7 +844,7 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 		if(new_e1 && new_e2)
 		{
 			alleles_match = (ALT1 == ALT2) && (REF1 == REF2);
-			diffsites << "\t" << REF1 << "\t" << ALT2 << "\t";
+			diffsites << REF1 << "\t" << ALT1 << "\t";
 			diffsites << alleles_match;
 
 			e1->parse_full_entry(true);
