@@ -944,8 +944,16 @@ void variant_file::output_discordance_by_site(const parameters &params, variant_
 			diffsites << "0";
 
 		double de = N_common_called - N_concord_non_missing_nonRR;
+		double de_alt = N_common_called - N_concord_non_missing_nonAA;
 		double discordance = N_discord / double(N_common_called);
-		double nrd = N_discord / double(de);
+		if (N_concord_non_missing_nonRR > N_concord_non_missing_nonAA)
+		{	//usual case 
+			double nrd = N_discord / double(de);
+		}
+		else
+		{
+			double nrd = N_discord / double(de_alt);
+		}
 		diffsites << "\t" << N_common_called << "\t" << N_discord << "\t" << discordance << "\t" << N_concord_non_missing_nonRR << "\t" << N_concord_non_missing_nonAA << "\t" << nrd;
 		diffsites << endl;
 	}
